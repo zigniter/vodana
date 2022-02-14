@@ -39,6 +39,7 @@ class BulkUpload extends Model
        // delete $templateJson["@id"];
         $templateArray = json_decode($templateJson, true);
         unset($templateArray["@id"]);
+
         foreach($inputData as $data ) {
             foreach($data as $field => $value ) {
                 if(in_array('@value',$templateArray[$field])){
@@ -52,6 +53,7 @@ class BulkUpload extends Model
             }
 
             $input = json_encode($templateArray);  
+
             $this->postData($secureurl , $apiKey , $input);
        // return $input;
         }
